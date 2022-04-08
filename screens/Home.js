@@ -2,25 +2,50 @@ import React from 'react';
 import {
     View,
     Text,
-    TouchableOpacity
+    Image,
+    SafeAreaView,
+    TouchableOpacity,
+    TextInput,
+    FlatList
 } from 'react-native';
+import { withStyleAnimation } from 'react-native-reanimated/lib/types/lib/reanimated2/animation';
+
+import { FONTS, COLORS, SIZES, icons, images, dummyData} from '../constants';
 
 const Home = ({ navigation }) => {
     return (
-        <View
+        <SafeAreaView
             style={{
-                flex: 1,
-                alignItems: 'center',
-                justifyContent: 'center'
+                flex:1, 
+                backgroundColor: COLORS.white
             }}
         >
-            <Text>Home</Text>
-            <TouchableOpacity
-                onPress={() => navigation.navigate("Recipe")}
-            >
-                <Text>Navigate to Recipe</Text>
-            </TouchableOpacity>
-        </View>
+            <FlatList 
+                data={dummyData.categories}
+                keyExtractor={item => `${item.id}`}
+                keyboardDismissMode='on-drag'
+                showsVerticalScrollIndicator={false}
+                ListHeaderComponent= {
+                    <View>
+
+                    </View>
+                }
+                renderItem={({item}) =>{
+                    return(
+                        <View>
+                            <Text>{item.name}</Text>
+                        </View>
+                    )
+                }}
+                ListFooterComponent={
+                    <View 
+                        style={{
+                            marginBottom: 100
+                        }}
+                    />
+                }
+            />
+        </SafeAreaView>
     )
 }
 
