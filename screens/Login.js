@@ -10,6 +10,7 @@ import {
 import LinearGradient   from 'react-native-linear-gradient'
 
 import { images, COLORS, SIZES, FONTS } from '../constants'
+import { CustomButton } from '../components'
 
 const Login = ({ navigation }) => {
 
@@ -81,7 +82,39 @@ const Login = ({ navigation }) => {
                         Viva uma esperiência gastronômica em sabor e serviço.
                     </Text>
                 {/* Buttons  */}
+                <View
+                    style={{
+                        flex: 1,
+                        justifyContent: 'center'
+                    }}
+                >
+                    {/* Button 1 */}
+                        <CustomButton
+                            buttonText='Cardápio'
+                            buttonContainerStyle={{
+                                paddingVertical: 19,
+                                borderRadius: 20
+                            }}
+                            colors={[COLORS.darkGreen, COLORS. lime]}
+                            onPress={() => navigation.replace('Home')}
+                        />
 
+                    {/* Button 2 */}
+                        <CustomButton
+                            buttonText='Unidades'
+                            buttonContainerStyle={{
+                                marginTop: SIZES.radius,
+                                paddingVertical: 18,
+                                borderRadius: 20,
+                                borderColor: COLORS.darkLime,
+                                borderWidth: 1
+                            }}
+                            colors={[]}
+                            onPress={() => navigation.replace('Home')}
+                        />
+
+                </View>
+                    
             </View>
         )
     }
