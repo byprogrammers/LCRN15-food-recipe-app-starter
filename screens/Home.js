@@ -12,6 +12,8 @@ import { withStyleAnimation } from 'react-native-reanimated/lib/types/lib/reanim
 
 import { FONTS, COLORS, SIZES, icons, images, dummyData} from '../constants';
 
+import { CategoryCard } from '../components'
+
 const Home = ({ navigation }) => {
     return (
         <SafeAreaView
@@ -32,9 +34,9 @@ const Home = ({ navigation }) => {
                 }
                 renderItem={({item}) =>{
                     return(
-                        <View>
-                            <Text>{item.name}</Text>
-                        </View>
+                        <CategoryCard 
+                            categoryItem={item}
+                        />
                     )
                 }}
                 ListFooterComponent={
