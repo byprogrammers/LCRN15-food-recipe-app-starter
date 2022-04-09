@@ -35,7 +35,13 @@ const Home = ({ navigation }) => {
                 renderItem={({item}) =>{
                     return(
                         <CategoryCard 
+                            containerStyle={{
+                                marginHorizontal: SIZES.padding
+                            }}
                             categoryItem={item}
+                            onPress={() => navigation.navigate
+                            ('Recipe', { recipe: item})}
+
                         />
                     )
                 }}
