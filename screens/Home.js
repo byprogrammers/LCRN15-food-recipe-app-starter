@@ -51,7 +51,18 @@ const Home = ({ navigation }) => {
                     </View>
 
                 {/* Image */}
-
+                    <TouchableOpacity
+                        onPress={() => console.log('profile')}
+                    >
+                        <Image 
+                            source={images.profile}
+                            style={{
+                                width: 40,
+                                height: 40,
+                                borderRadius: 20
+                            }}
+                        />
+                    </TouchableOpacity>
             </View>
         )
     }
