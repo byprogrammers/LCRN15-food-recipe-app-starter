@@ -101,6 +101,71 @@ const Home = ({ navigation }) => {
         )
     }
 
+    function renderSeeRecipeCard(){
+        return(
+            <View
+                style={{
+                    flexDirection: 'row',
+                    marginTop: SIZES.padding,
+                    marginHorizontal: SIZES.padding,
+                    borderRadius: 10,
+                    backgroundColor: COLORS.lightGreen
+                }}
+            >
+                {/* Image */}
+                <View
+                    style={{
+                        width: 100,
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}
+                >
+                    <Image 
+                        source={images.recipe}
+                        style={{
+                            width: 80,
+                            height: 80,
+                        }}
+                    />
+                </View>
+
+                {/* Text */}
+                <View
+                    style={{
+                        flex: 1,
+                        paddingVertical: SIZES.radius
+                    }}
+                >
+                    <Text
+                        style={{
+                            width: '70%',
+                            ...FONTS.body4
+                        }}
+                    >
+                        Novas delícias que preparamos para você! 
+                    </Text>
+
+                    <TouchableOpacity
+                        style={{
+                            marginTop: 10
+                        }}
+                        onPress={() => console.log('Confira')}
+                    >
+                        <Text
+                            style={{
+                                color: COLORS.darkGreen,
+                                textDecorationLine: 'underline',
+                                ...FONTS.h4
+                            }}
+                        >
+                            Confira!
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        )
+    }
+
     return (
         <SafeAreaView
             style={{
@@ -122,6 +187,8 @@ const Home = ({ navigation }) => {
                         {renderSearchBar()}
                         
                         {/* See Recipe Card */}
+                        {renderSeeRecipeCard()}
+
                         {/* Trending Section */}
                         {/* CategoryHeader */}
                     </View>
