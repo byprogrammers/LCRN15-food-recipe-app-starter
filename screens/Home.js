@@ -5,6 +5,7 @@ import {
     Image,
     SafeAreaView,
     TouchableOpacity,
+    Platform,
     TextInput,
     FlatList
 } from 'react-native';
@@ -12,11 +13,11 @@ import { withStyleAnimation } from 'react-native-reanimated/lib/types/lib/reanim
 
 import { FONTS, COLORS, SIZES, icons, images, dummyData} from '../constants';
 
-import { CategoryCard } from '../components'
+import { CategoryCard, TrendingCard } from '../components';
 
 const Home = ({ navigation }) => {
 
-    function renderHeader(){
+    function renderHeader(){ 
         return (
             <View
                 style={{
@@ -166,6 +167,44 @@ const Home = ({ navigation }) => {
         )
     }
 
+    function renderTrendingSection(){
+        return(
+            <View
+                style={{
+                    marginTop: SIZES.padding
+                }}
+            >
+                <Text
+                    style={{
+                        marginHorizontal: SIZES.padding,
+                        ...FONTS.h2
+                    }}
+                >
+                    Pratos em Destaque
+                </Text>
+
+                <FlatList 
+                    data={dummyData.trendingRecipes}
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    keyExtractor={item => `${item.id}`}
+                    renderItem={({item, index}) => {
+                        return(
+                            <TrendingCard 
+                                containerStyle={{
+                                    marginLeft: index == 0 ? SIZES.padding : 0
+                                }}
+                                recipeItem={item}
+                                onPress={() => navigation.navigate
+                                ('Recipe', { recipe: item})}
+                            />
+                        )
+                    }}
+                />
+            </View>
+        )
+    }
+
     return (
         <SafeAreaView
             style={{
@@ -190,12 +229,14 @@ const Home = ({ navigation }) => {
                         {renderSeeRecipeCard()}
 
                         {/* Trending Section */}
+                        {renderTrendingSection()}
+
                         {/* CategoryHeader */}
                     </View>
                 }
                 renderItem={({item}) =>{
                     return(
-                        <CategoryCard 
+                        <CategoryCard   
                             containerStyle={{
                                 marginHorizontal: SIZES.padding
                             }}

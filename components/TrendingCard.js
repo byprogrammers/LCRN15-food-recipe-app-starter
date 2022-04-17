@@ -8,19 +8,86 @@ import {
     StyleSheet
  } from 'react-native'
 
- import { SIZES, COLORS, FONTS, icons } from '../constants';
-
  import { BlurView } from '@react-native-community/blur';
 
- const RecipeCardInfo = ({recipeItem}) => {
-     return (
-          <BlurView
-            blurType='dark'
-            style={styles.recipeCardContainer}
-          >
+ import { SIZES, COLORS, FONTS, icons } from '../constants';
 
-          </BlurView>
+ const RecipeCardDetails = ({recipeItem}) => {
+     return(
+         <View
+            style={{
+                flex: 1
+            }}
+         >
+            {/* Name & Bookmark */}
+            <View
+                style={{
+                    flex: 1,
+                    flexDirection: 'row',
+                    justifyContent: 'space-between'
+                }}
+            >
+                <Text
+                    style={{
+                        width: '70%',
+                        color: COLORS.white,
+                        ...FONTS.h3,
+                        fontSize: 18
+                    }}
+                >
+                     {recipeItem.name}
+                </Text>
+
+                <Image
+                    source={recipeItem.isBookmark ? icons.bookmarkFilled : icons.bookmark}
+                    style={{
+                        width: 20,
+                        height: 20,
+                        marginRight: SIZES.base,
+                        tintColor: COLORS.darkGreen,
+                    }}
+                />
+            </View>
+
+            {/* Duration & Serving */}
+            <Text
+                style={{
+                    color: COLORS.lightGray,
+                    ...FONTS.body4
+                }}
+            >
+                {recipeItem.duration} | {recipeItem.serving} Serving
+            </Text>
+         </View>
      )
+ }
+
+ const RecipeCardInfo = ({recipeItem}) => {
+    if(Platform.OS === 'ios'){
+        return (
+            <BlurView
+              blurType='dark'
+              style={styles.recipeCardContainer}
+            >
+                <RecipeCardDetails 
+                    recipeItem={recipeItem}
+                />   
+            </BlurView>
+       )
+    } else {
+        return(
+            <View
+                style={{
+                    ...styles.recipeCardContainer,
+                    backgroundColor: COLORS.transparentDarkGray
+                }}
+            >
+                <RecipeCardDetails 
+                    recipeItem={recipeItem}
+                />
+            </View>
+        )
+    }
  }
 
  const TrendingCard = ({ containerStyle, recipeItem, onPress }) => {
@@ -70,10 +137,9 @@ import {
             </View>
 
             {/* Card Info Blur */}
-            <RecipeCardInfo>
-                recipeItem={recipeItem}
-            </RecipeCardInfo>
-
+            <RecipeCardInfo
+             recipeItem={recipeItem}
+            />
         </TouchableOpacity>
      )
  }
