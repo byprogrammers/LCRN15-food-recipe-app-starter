@@ -4,12 +4,12 @@ import icons from "./icons"
 const trendingRecipes = [
     {
         id: 1,
-        name: "Spaghetti With Shrimp Sauce",
+        name: "Spaghetti ao molho Shrimp",
         image: images.spagetti,
-        duration: "30 mins",
+        duration: "30 min",
         serving: 1,
         isBookmark: false,
-        category: "Pasta",
+        category: "Pastas",
         author: {
             profilePic: images.UserProfile5,
             name: "Maria",
@@ -18,14 +18,14 @@ const trendingRecipes = [
             {
                 id: 1,
                 icon: icons.pasta,
-                description: "Spaghetti pasta",
+                description: "Pasta Spaghetti",
                 quantity: "100g"
             },
             {
                 id: 2,
                 icon: icons.oil,
-                description: "Olive Oil",
-                quantity: "2 tbsp"
+                description: "Azeite de Oliva",
+                quantity: "2 colheres"
             },
             {
                 id: 3,
@@ -74,12 +74,12 @@ const trendingRecipes = [
     },
     {
         id: 2,
-        name: "Malaysian Chicken Satay",
+        name: "Frango Malaysian Salteado",
         image: images.satay,
-        duration: "50 mins",
+        duration: "50 min",
         serving: 10,
         isBookmark: true,
-        category: "Local",
+        category: "Oriental",
         author: {
             profilePic: images.UserProfile8,
             name: "Mandy",
@@ -144,10 +144,10 @@ const trendingRecipes = [
         id: 3,
         name: "Sarawak Laksa",
         image: images.laksa,
-        duration: "30 mins",
+        duration: "30 min",
         serving: 1,
         isBookmark: true,
-        category: "Local",
+        category: "Tailândesa",
         author: {
             profilePic: images.UserProfile9,
             name: "Jessie",
@@ -214,10 +214,10 @@ const trendingRecipes = [
         id: 4,
         name: "Nasi Lemak",
         image: images.nasiLemak,
-        duration: "1 hour",
+        duration: "1 hora",
         serving: 10,
         isBookmark: true,
-        category: "Local",
+        category: "Árabe",
         author: {
             profilePic: images.UserProfile7,
             name: "Ali Baba",
